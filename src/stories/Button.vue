@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import './button.css';
 
-export default Vue.extend({
+/* eslint-disable */
+export default {
   name: 'my-button',
 
   props: {
@@ -51,5 +51,6 @@ export default Vue.extend({
       this.$emit('onClick');
     },
   },
-});
+};
+/* eslint-enable */
 </script>

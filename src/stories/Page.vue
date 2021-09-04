@@ -74,6 +74,7 @@ export default {
   },
 
   methods: {
+    /* eslint-disable */
     onLogin() {
       this.$emit('onLogin');
     },
@@ -83,6 +84,7 @@ export default {
     onCreateAccount() {
       this.$emit('onCreateAccount');
     },
+    /* eslint-enable */
   },
 };
 </script>
