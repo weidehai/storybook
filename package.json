@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "stylelint-config-rational-order": "^0.1.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
@@ -40,13 +41,14 @@
     "@vue/test-utils": "^1.0.3",
     "babel-loader": "^8.2.2",
     "eslint": "^7.32.0",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^6.2.2",
-    "eslint-webpack-plugin": "^3.0.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-webpack-plugin": "^3.0.1",
     "typescript": "~4.1.5",
     "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.11"
@@ -65,8 +67,12 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "arrow-parens": "off"
+      "arrow-parens": "off",
+      "max-len": "warn"
     },
+    "ignorePatterns": [
+      "*.stories.js"
+    ],
     "overrides": [
       {
         "files": [

@@ -1,6 +1,5 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
-
+const StylelintPlugin = require('stylelint-webpack-plugin');
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
@@ -17,15 +16,23 @@ module.exports = {
     });
 
     config.module.rules.push({
-      test:/\.(ts|tsx)$/,
-      loader:'ts-loader',
-      options:{
-        appendTsSuffixTo:[/\.vue$/]
+      test: /\.(ts|tsx)$/,
+      loader: 'ts-loader',
+      options: {
+        appendTsSuffixTo: [/\.vue$/],
+      },
+    });
+
+    config.module.rules.push({
+      test: /\.(js|vue)$/,
+      exclude: /node_modules/,
+      loader: 'eslint-loader',
+    });
+    config.plugins.push(new StylelintPlugin(
+      {
+        "extensions":['vue','css','scss']
       }
-    })
-
-    config.plugins.push(new ESLintPlugin());
-
+    ))
     // Return the altered config
     return config;
   },

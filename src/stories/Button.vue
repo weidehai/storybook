@@ -21,7 +21,7 @@ export default Vue.extend({
     size: {
       type: String,
       default: 'medium',
-      validator: function() {
+      validator(value) {
         return ['small', 'medium', 'large'].indexOf(value) !== -1;
       },
     },
