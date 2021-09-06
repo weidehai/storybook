@@ -28,11 +28,18 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'eslint-loader',
     });
-    config.plugins.push(new StylelintPlugin(
-      {
-        "extensions":['vue','css','scss']
-      }
-    ))
+
+    config.module.rules.push({
+      test: /\.(js)$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+    });
+
+    config.plugins.push(
+      new StylelintPlugin({
+        extensions: ['vue', 'css', 'scss'],
+      })
+    );
     // Return the altered config
     return config;
   },

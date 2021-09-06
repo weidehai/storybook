@@ -1,11 +1,18 @@
-.container {
+:root {
+  --pick-color: #000;
+}
+
+.color-box {
+  --slider-bar-width: 10px;
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   width: 300px;
   height: 250px;
   margin-left: 20px;
 
   .panel {
+    position: 38;
     width: 270px;
     height: 210px;
     background: rgb(13, 73, 238);
@@ -27,9 +34,18 @@
       height: 210px;
       background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
     }
+
+    .selector {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border: 1px solid #fff;
+      border-radius: 3px;
+    }
   }
 
-  .slider {
+  .slider-bar {
+    position: relative;
     width: 10px;
     height: 210px;
     margin-left: 10px;
@@ -44,4 +60,23 @@
       #f00 100%
     );
   }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--slider-bar-width);
+    height: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 3px 1px rgb(117, 113, 113);
+  }
+}
+
+.color-preview {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  background-color: var(--pick-color);
+  border: 1px solid rgb(148, 142, 142);
+  border-radius: 3px;
 }
