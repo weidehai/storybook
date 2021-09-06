@@ -6,6 +6,7 @@
   "rules": {
     "max-nesting-depth": 5,
     "selector-no-qualifying-type": null,
-    "order/properties-alphabetical-order": null
+    "order/properties-alphabetical-order": null,
+    "function-parentheses-space-inside":"never-single-line"
   }
 }

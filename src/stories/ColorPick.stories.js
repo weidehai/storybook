@@ -7,7 +7,7 @@ export default {
 
 const Template = (args, { argTypes }) => ({
   components: { ColorPick },
-  template: '<color-pick />',
+  template: '<colorPick />',
 });
 
 export const Primary = Template.bind({});
