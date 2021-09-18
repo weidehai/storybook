@@ -21,7 +21,7 @@
 import Vue from 'vue';
 import './colorPick.scss';
 import Dragable from 'drag-element';
-import { hsv2rgb, rgb2hex } from '../utils/color';
+import { hsv2rgb, toHex } from '../utils/color';
 
 export default Vue.extend({
   name: 'colorPick',
@@ -59,6 +59,8 @@ export default Vue.extend({
         },
         mode: 'vertical',
       });
+      // panel调节亮度和饱和度
+      // 亮度为0是黑，饱和度为0是白
       const selector = new Dragable(elSelecor, {
         mode: 'both',
         boundary: {
@@ -68,19 +70,22 @@ export default Vue.extend({
           bottom: 205,
         },
       });
-      slider.on('move', () => {
-        const hue = Math.round((elSlider.offsetTop / 207) * 360);
-        const color = rgb2hex(hsv2rgb([hue, this.saturation, this.value]));
-        document.documentElement.style.setProperty('--pick-color', `${color}`);
-      });
+      slider.on('move', this.onSliderChange);
+      selector.on('move', this.onPanelChange);
     },
     onSliderChange() {
-      // updateColor();
-      return 0;
+      const elSlider = this.$refs.slider as HTMLElement;
+      this.hue = Math.round((elSlider.offsetTop / 207) * 360);
+      this.pickColor = toHex(hsv2rgb(this.hue, this.saturation, this.value));
+      document.documentElement.style.setProperty('--pick-color', `${this.pickColor}`);
+      document.documentElement.style.setProperty('--panel-color', `hsl(${this.hue},100%,50%)`);
     },
     onPanelChange() {
-      // updateColor();
-      return 0;
+      const elSelecor = this.$refs.selector as HTMLElement;
+      this.saturation = (elSelecor.offsetLeft / 265) * 100;
+      this.value = 100 - (elSelecor.offsetTop / 205) * 100;
+      this.pickColor = toHex(hsv2rgb(this.hue, this.saturation, this.value));
+      document.documentElement.style.setProperty('--pick-color', `${this.pickColor}`);
     },
   },
 });

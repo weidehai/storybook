@@ -1,5 +1,6 @@
 :root {
   --pick-color: #000;
+  --panel-color: hsl(0, 100%, 50%);
 }
 
 .color-box {
@@ -15,7 +16,7 @@
     position: 38;
     width: 270px;
     height: 210px;
-    background: rgb(13, 73, 238);
+    background: var(--panel-color);
 
     .light {
       position: absolute;
